@@ -24,7 +24,8 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Simple RESTful API example using [Nest.JS](https://github.com/nestjs/nest).
+Scaffolded from Nest.JS example repository.
 
 ## Installation
 
