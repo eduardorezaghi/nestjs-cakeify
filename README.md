@@ -35,9 +35,33 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## Testing endpoints manually
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+To test endpoints, use cURL with local execution. Examples:
+```bash
+curl --request GET \
+  --url http://localhost:3000/
+```
+
+```bash
+curl --request GET \
+  --url http://localhost:3000/cakes/
+```
+
+```bash
+curl --request POST \
+  --url http://localhost:3000/cakes/mimic/ \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"flavour": "red velvet",
+	"ingredients": {
+			"egg": 2,
+			"flour": 1,
+			"milk": "1 1/2 cup"
+	}
+}'
+```
+
 
 ## Stay in touch
 
