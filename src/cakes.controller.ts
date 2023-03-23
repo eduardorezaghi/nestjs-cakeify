@@ -1,4 +1,4 @@
-import { Controller, Get, Header, HttpCode, Post, Req } from '@nestjs/common';
+import { Body, Controller, Get, Header, HttpCode, Param, Post, Req } from '@nestjs/common';
 import { Request } from 'express';
 
 @Controller('cakes')
@@ -10,9 +10,20 @@ export class CakesController {
       return 'This action bakes a new cake';
     }
 
+    @Post(':mimic')
+    @HttpCode(200)
+    createPostBody(@Body() body: any) {
+        return body
+    }
+
     @Get()
     @HttpCode(200)
     findAll(@Req() request: Request): string {
         return 'This action will return all baked cakes!'
+    }
+
+    @Get(':id')
+    findOne(@Param('id') id: string) {
+        return `This action will return #${id} cake!`
     }
 }
