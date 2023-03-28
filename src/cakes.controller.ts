@@ -1,19 +1,17 @@
-import { Body, Controller, Get, Header, HttpCode, Param, Post, Put, Query, Req } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Header, HttpCode, Param, Post, Put, Query, Req } from '@nestjs/common';
 import { Request } from 'express';
+import { CakesService } from './cakes/cakes.service';
+import { Cakes } from './cakes/cakes.entity';
 import { CreateCakeDTO, UpdateCakeDTO } from './dto'
 @Controller('cakes')
 export class CakesController {
-    @Post()
-    @Header('Cache-Control', 'none')
-    @HttpCode(204)
-    create(): string {
-      return 'This action bakes a new cake';
-    }
+    // Constructor creates a Service for interacting with Data Sources
+    constructor(private readonly cakesService:CakesService ) {}
 
     @Post()
     @HttpCode(200)
     async createResource(@Body() createCakeDTO: CreateCakeDTO) {
-        return `This action creates a new the recipe for a cake!`;
+        return this.cakesService.create(createCakeDTO)
     } 
 
     @Put(':id')
@@ -21,7 +19,7 @@ export class CakesController {
     async updateResource(
         @Param('id') id: string,
         @Body() updateCakeDTO: UpdateCakeDTO) {
-        return `This action updates the recipe for #${id} cake!`;
+        return this.cakesService.update(id, updateCakeDTO);
     }
 
     @Post(':mimic')
@@ -30,14 +28,22 @@ export class CakesController {
         return body
     }
 
+    @Delete(':id')
+    remove(@Param('id') id: string) {
+        return this.cakesService.remove(id);
+    }
+
     @Get()
     @HttpCode(200)
-    findAll(@Req() request: Request): string {
-        return 'This action will return all baked cakes!'
+    findAll(
+        @Query() paginationQuery,
+        @Req() request: Request): Cakes[] {
+        const { offset, limit } = paginationQuery;
+        return this.cakesService.findAll();
     }
 
     @Get(':id')
     findOne(@Param('id') id: string) {
-        return `This action will return #${id} cake!`
+        return this.cakesService.findOne(id)
     }
 }
