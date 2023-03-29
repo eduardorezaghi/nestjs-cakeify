@@ -3,10 +3,10 @@
 * for creating a `cake` object.
 */
 
-export class Cakes {
+export interface Cakes {
     id: number,
     flavour: string,
     makingDate: Date,
     expirationDate: Date,
-    ingredients: Map<string, number>
+    ingredients: Object
 }
