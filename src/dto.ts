@@ -3,10 +3,10 @@
  * for creating a `cake` object.
  */
 export interface CreateCakeDTO {
-    flavour: string,
-    makingDate: Date,
-    expirationDate: Date,
-    ingredients: Array<Map<string, number>>
+  flavour: string;
+  makingDate: Date;
+  expirationDate: Date;
+  ingredients: Array<any>;
 }
 
 /**
@@ -14,6 +14,6 @@ export interface CreateCakeDTO {
  * for updating a `cake` object.
  */
 export interface UpdateCakeDTO {
-    flavour: string,
-    ingredients: Array<Map<string, number>>
+  flavour: string;
+  ingredients: Array<any>;
 }
