@@ -2,20 +2,23 @@ import { Injectable } from '@nestjs/common';
 import { CreateCakeDTO, UpdateCakeDTO } from 'src/dto';
 import { Cakes } from './cakes.entity';
 
+let now = new Date();
+
 @Injectable()
 export class CakesService {
     private cakes: Cakes[] = [
         {
             id: 1,
             flavour: "Red Velvet",
-            makingDate: new Date(),
-            expirationDate: new Date(new Date().getDate() * 7),
-            ingredients: new Map()
-                .set("egg", 2)
-                .set("flour cups", 2)
-                .set("cocoa powder", 3)
-                .set("butter", 3) 
-                .set("vanilla extract", 2) 
+            makingDate: now,
+            expirationDate: new Date(now.setDate(now.getDate() + 7)),
+            ingredients: {
+                "egg": 2,
+                "flour cups": 2,
+                "cocoa powder": 3,
+                "butter": 3,
+                "vanilla extract": 2
+            }
         }
     ];
 
