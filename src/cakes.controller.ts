@@ -12,6 +12,7 @@ export class CakesController {
     @Post()
     @HttpCode(200)
     async createResource(@Body() createCakeDTO: CreateCakeDTO) {
+        console.log(createCakeDTO instanceof CreateCakeDTO)
         return this.cakesService.create(createCakeDTO);
     }
 
@@ -44,7 +45,8 @@ export class CakesController {
     }
 
     @Get(':id')
-    findOne(@Param('id') id: string) {
-        return this.cakesService.findOne(id);
+    findOne(@Param('id') id: number) {
+        console.log(typeof id);
+        return this.cakesService.findOne(String(id));
     }
 }
