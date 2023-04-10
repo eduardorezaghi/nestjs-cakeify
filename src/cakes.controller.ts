@@ -7,13 +7,15 @@ import { UpdateCakeDTO } from './cakes/dto/update-cake-dto';
 @Controller('cakes')
 export class CakesController {
     // Constructor creates a Service for interacting with Data Sources
-    constructor(private readonly cakesService:CakesService ) {}
+    constructor(private readonly cakesService: CakesService) {}
 
-    @Post()
+    @Post(':id')
     @HttpCode(200)
-    async createResource(@Body() createCakeDTO: CreateCakeDTO) {
-        return this.cakesService.create(createCakeDTO)
-    } 
+    async createResource(
+        @Param('id') id: string,
+        @Body() createCakeDTO: CreateCakeDTO) {
+        return this.cakesService.create(createCakeDTO);
+    }
 
     @Put(':id')
     @HttpCode(200)
@@ -45,6 +47,6 @@ export class CakesController {
 
     @Get(':id')
     findOne(@Param('id') id: string) {
-        return this.cakesService.findOne(id)
+        return this.cakesService.findOne(id);
     }
 }
