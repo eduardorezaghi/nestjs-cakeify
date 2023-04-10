@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { CreateCakeDTO, UpdateCakeDTO } from 'src/dto';
-import { Cakes } from './cakes.entity';
+import { CreateCakeDTO } from 'src/cakes/dto/create-cake-dto';
+import { UpdateCakeDTO } from 'src/cakes/dto/update-cake-dto';
+import { Cakes } from './entities/cakes.entity';
 
 let now = new Date();
 
