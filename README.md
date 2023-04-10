@@ -9,6 +9,12 @@ Scaffolded from Nest.JS example repository.
 $ npm install
 ```
 
+## Running Docker database container
+To run database locally, use the following command (must have Docker installed):
+```bash
+$ docker compose up -d
+```
+
 ## Running the app
 
 ```bash
@@ -62,12 +68,6 @@ curl --request POST \
 }'
 ```
 
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
