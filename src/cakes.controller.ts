@@ -1,8 +1,9 @@
 import { Body, Controller, Delete, Get, Header, HttpCode, Param, Post, Put, Query, Req } from '@nestjs/common';
 import { Request } from 'express';
 import { CakesService } from './cakes/cakes.service';
-import { Cakes } from './cakes/cakes.entity';
-import { CreateCakeDTO, UpdateCakeDTO } from './dto'
+import { Cakes } from './cakes/entities/cakes.entity';
+import { CreateCakeDTO } from './cakes/dto/create-cake-dto';
+import { UpdateCakeDTO } from './cakes/dto/update-cake-dto';
 @Controller('cakes')
 export class CakesController {
     // Constructor creates a Service for interacting with Data Sources
