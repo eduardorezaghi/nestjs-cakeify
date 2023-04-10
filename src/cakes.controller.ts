@@ -9,11 +9,9 @@ export class CakesController {
     // Constructor creates a Service for interacting with Data Sources
     constructor(private readonly cakesService: CakesService) {}
 
-    @Post(':id')
+    @Post()
     @HttpCode(200)
-    async createResource(
-        @Param('id') id: string,
-        @Body() createCakeDTO: CreateCakeDTO) {
+    async createResource(@Body() createCakeDTO: CreateCakeDTO) {
         return this.cakesService.create(createCakeDTO);
     }
 
