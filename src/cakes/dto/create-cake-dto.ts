@@ -1,4 +1,4 @@
-import { IsString, IsArray, IsDate } from 'class-validator';
+import { IsString, IsArray, IsDate, IsDateString } from 'class-validator';
 
 /**
  * DTO interface for defining type rules
@@ -8,10 +8,10 @@ export class CreateCakeDTO {
     @IsString()
     readonly flavour: string;
 
-    @IsDate()
+    @IsDateString()
     readonly makingDate: Date;
 
-    @IsDate()
+    @IsDateString()
     readonly expirationDate: Date;
 
     @IsArray()
